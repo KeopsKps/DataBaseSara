@@ -58,7 +58,7 @@ go
 
 Create table [Hospedaje]
 (
-	[Id_hospedaje] Varchar(20) NOT NULL identity(1,1),
+	[Id_hospedaje] Integer NOT NULL identity(1,1),
 	[Nombre_Turista] Nvarchar(1) NOT NULL,
 	[Numero_Habitacion] Integer NOT NULL,
 	[Categoria] Char(50) NOT NULL,
@@ -70,7 +70,7 @@ go
 Create table [Actividad]
 (
 	[Descripcion] Nvarchar(100) NOT NULL,
-	[Id_Act] Char(1) NOT NULL identity(1,1),
+	[Id_Act] int NOT NULL identity(1,1),
 Primary Key ([Id_Act])
 ) 
 go
@@ -125,7 +125,7 @@ go
 
 Create table [Boleto_Aereo]
 (
-	[IdBoleto] Integer NOT NULL, UNIQUE ([IdBoleto]) identity(1,1),
+	[IdBoleto] Integer NOT NULL identity(1,1),
 	[Destino] Nvarchar(50) NOT NULL,
 	[Fecha_Ida] Datetime NOT NULL,
 	[Tarifa] Float NOT NULL,
@@ -183,9 +183,9 @@ Create table [Beneficio_Incluido]
 	[id_beneficio] Integer NOT NULL identity(1,1),
 	[Nombre_beneficio] Nvarchar(50) NOT NULL,
 	[id_comida] Integer NULL,
-	[Id_Act] Char(1) NULL,
+	[Id_Act] Integer NULL,
 	[IdTour] Integer NOT NULL,
-	[Id_hospedaje] Varchar(20) NULL,
+	[Id_hospedaje] Integer NULL,
 Primary Key ([id_beneficio])
 ) 
 go
