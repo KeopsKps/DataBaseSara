@@ -10,6 +10,8 @@ Database		MS SQL 2005
 */
 USE master
 GO
+DROP DATABASE Destiny
+GO
 CREATE DATABASE Destiny
 GO
 USE Destiny
@@ -17,7 +19,7 @@ GO
 
 Create table [Reservacion]
 (
-	[Id_reservacion] Integer NOT NULL,
+	[Id_reservacion] Integer NOT NULL identity(1,1),
 	[FechaReservacion] Datetime NOT NULL,
 	[Cedula] Varchar(20) NOT NULL,
 	[IdChoferCoster] Integer NOT NULL,
@@ -27,7 +29,7 @@ go
 
 Create table [Tour_Nacional]
 (
-	[IdTour] Integer NOT NULL,
+	[IdTour] Integer NOT NULL identity(1,1),
 	[Hora_Salida] Datetime NOT NULL,
 	[Hora_Regreso] Datetime NOT NULL,
 	[Fecha_Tour] Datetime NOT NULL,
@@ -40,7 +42,7 @@ go
 
 Create table [Guia]
 (
-	[Id_Guia] Integer NOT NULL,
+	[Id_Guia] Integer NOT NULL identity(1,1),
 	[Nombre_Guia] Nvarchar(50) NOT NULL,
 Primary Key ([Id_Guia])
 ) 
@@ -56,7 +58,7 @@ go
 
 Create table [Hospedaje]
 (
-	[Id_hospedaje] Varchar(20) NOT NULL,
+	[Id_hospedaje] Varchar(20) NOT NULL identity(1,1),
 	[Nombre_Turista] Nvarchar(1) NOT NULL,
 	[Numero_Habitacion] Integer NOT NULL,
 	[Categoria] Char(50) NOT NULL,
@@ -68,7 +70,7 @@ go
 Create table [Actividad]
 (
 	[Descripcion] Nvarchar(100) NOT NULL,
-	[Id_Act] Char(1) NOT NULL,
+	[Id_Act] Char(1) NOT NULL identity(1,1),
 Primary Key ([Id_Act])
 ) 
 go
@@ -86,7 +88,7 @@ go
 
 Create table [Tipo_servicio]
 (
-	[Id_servicio] Integer NOT NULL,
+	[Id_servicio] Integer NOT NULL identity(1,1),
 	[Nombre_Servicio] Nvarchar(50) NOT NULL,
 	[IdPaqueteEuropa] Integer NULL,
 	[IdSeguroViaje] Integer NULL,
@@ -101,14 +103,14 @@ go
 
 Create table [Paquete_Europa]
 (
-	[IdPaqueteEuropa] Integer NOT NULL,
+	[IdPaqueteEuropa] Integer NOT NULL identity(1,1),
 Primary Key ([IdPaqueteEuropa])
 ) 
 go
 
 Create table [Hotel]
 (
-	[IdServicioHotel] Integer NOT NULL,
+	[IdServicioHotel] Integer NOT NULL identity(1,1),
 	[Fecha_Ingreso] Datetime NOT NULL,
 	[Edad_Persona] Integer NOT NULL,
 	[Fecha_Salida] Datetime NOT NULL,
@@ -123,7 +125,7 @@ go
 
 Create table [Boleto_Aereo]
 (
-	[IdBoleto] Integer NOT NULL, UNIQUE ([IdBoleto]),
+	[IdBoleto] Integer NOT NULL, UNIQUE ([IdBoleto]) identity(1,1),
 	[Destino] Nvarchar(50) NOT NULL,
 	[Fecha_Ida] Datetime NOT NULL,
 	[Tarifa] Float NOT NULL,
@@ -136,14 +138,14 @@ go
 
 Create table [Paquete_Nacional]
 (
-	[IdPaqueteNacional] Integer NOT NULL,
+	[IdPaqueteNacional] Integer NOT NULL identity(1,1),
 Primary Key ([IdPaqueteNacional])
 ) 
 go
 
 Create table [Seguro_Viaje]
 (
-	[IdSeguroViaje] Integer NOT NULL,
+	[IdSeguroViaje] Integer NOT NULL identity(1,1),
 	[Pasaporte] Nvarchar(50) NOT NULL,
 	[Destino] Nvarchar(100) NOT NULL,
 	[Fecha_Ida] Datetime NOT NULL,
@@ -156,7 +158,7 @@ go
 
 Create table [Renta_Vehiculo]
 (
-	[IdRentaVehiculo] Integer NOT NULL,
+	[IdRentaVehiculo] Integer NOT NULL identity(1,1),
 	[Cantidad_dia] Integer NOT NULL,
 	[Tipo_carro] Nvarchar(20) NOT NULL,
 	[Fecha_renta] Datetime NOT NULL,
@@ -168,7 +170,7 @@ go
 
 Create table [Comida]
 (
-	[id_comida] Integer NOT NULL,
+	[id_comida] Integer NOT NULL identity(1,1),
 	[Tipo_Comida] Nvarchar(50) NOT NULL,
 	[Cantidad_Plato] Integer NOT NULL,
 	[Nombre_Plato] Nvarchar(50) NOT NULL,
@@ -178,7 +180,7 @@ go
 
 Create table [Beneficio_Incluido]
 (
-	[id_beneficio] Integer NOT NULL,
+	[id_beneficio] Integer NOT NULL identity(1,1),
 	[Nombre_beneficio] Nvarchar(50) NOT NULL,
 	[id_comida] Integer NULL,
 	[Id_Act] Char(1) NULL,
@@ -190,7 +192,7 @@ go
 
 Create table [Acompanante]
 (
-	[id_acompanante] Integer NOT NULL,
+	[id_acompanante] Integer NOT NULL identity(1,1),
 	[Nombre_acompanante] Nvarchar(50) NOT NULL,
 	[Cedula] Varchar(20) NULL
 Primary Key ([id_acompanante])
@@ -205,8 +207,7 @@ go
 
 Create table [ChoferCoster]
 (
-	[IdChoferCoster] Integer NOT NULL, UNIQUE ([IdChoferCoster]),
-	[Fecha] Datetime NOT NULL,
+	[IdChoferCoster] Integer NOT NULL identity(1,1),
 	[CedulaChofer] Varchar(16) NOT NULL,
 	[NombreChofer] Varchar(50) NOT NULL,
 	[CantidadCoster] Integer NOT NULL,
@@ -217,7 +218,7 @@ go
 
 Create table [Forma_Pago]
 (
-	[Id_FormaPago] Integer NOT NULL,
+	[Id_FormaPago] Integer NOT NULL identity(1,1),
 	[Tipo_Pago] Nvarchar(50) NOT NULL,
 	[Cantidad_Depositada] Integer NOT NULL,
 Primary Key ([Id_FormaPago])
@@ -226,7 +227,7 @@ go
 
 Create table [Idioma]
 (
-	[Id_Idioma] Integer NOT NULL,
+	[Id_Idioma] Integer NOT NULL identity(1,1),
 	[Nombre_Idioma] Nvarchar(50) NOT NULL,
 Primary Key ([Id_Idioma])
 ) 
@@ -248,7 +249,7 @@ go
 
 Create table [Lugares]
 (
-	[Id_Lugar] Integer NOT NULL,
+	[Id_Lugar] Integer NOT NULL identity(1,1),
 	[Nombre_Lugar] Nvarchar(100) NOT NULL,
 Primary Key ([Id_Lugar])
 ) 
